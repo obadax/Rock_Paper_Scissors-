@@ -1,3 +1,6 @@
+
+
+
 const getComputerChoice = () => {
     // These are the choices in array
     const choices = ['rock', 'paper', 'scissors'];
@@ -7,18 +10,12 @@ const getComputerChoice = () => {
     return choices[randomIndex];
 }
 
-const getUserChoice = () => {
-    const userChoice = prompt("Choose rock, paper, or scissors").toLowerCase();
-    return userChoice;
-}
-
-const getWinner = () => {
+const getWinner = (playerChoice) => {
     const computerChoice = getComputerChoice();
-    const playerChoice = getUserChoice();
-    
+
     console.log(`Player choice: ${playerChoice}`);
     console.log(`Computer choice: ${computerChoice}`);
-    
+
     if (computerChoice === playerChoice) {
         return "It's a tie!";
     } else if (
@@ -32,4 +29,26 @@ const getWinner = () => {
     }
 }
 
-console.log(getWinner());
+const setupEventListeners = () => {
+    let rock_btn = document.querySelector("#rock");
+    let paper_btn = document.querySelector("#paper");
+    let scissors_btn = document.querySelector("#scissors");
+
+    rock_btn.addEventListener('click', () => {
+        const playerChoice = 'rock';
+        console.log(getWinner(playerChoice));
+    });
+
+    paper_btn.addEventListener('click', () => {
+        const playerChoice = 'paper';
+        console.log(getWinner(playerChoice));
+    });
+
+    scissors_btn.addEventListener('click', () => {
+        const playerChoice = 'scissors';
+        console.log(getWinner(playerChoice));
+    });
+}
+
+// Call this function to set up the event listeners after the DOM has loaded
+setupEventListeners();
